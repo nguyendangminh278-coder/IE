@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<title>LiM_E IELTS Prep - Tự thêm câu</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#67BCAF',
+          50: '#f0f9f8',
+          100: '#dcf1ee',
+          200: '#bce0db',
+          300: '#90c8c1',
+          400: '#67BCAF',
+          500: '#469b8e',
+          600: '#357d72'
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+
+.animation-fade-in { animation: fadeIn 0.3s ease-in-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+.record-pulse {
+  animation: recordPulse 1.1s ease-in-out infinite;
+}
+@keyframes recordPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.mic-select-box {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.mic-selected-label {
+  display: block;
+  margin-top: 0.5rem;
+  color: #475569;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.waveform-shell {
+  width: 100%;
+  max-width: 760px;
+  margin-bottom: 1rem;
+}
+
+.waveform-canvas {
+  width: 100%;
+  height: 120px;
+  display: block;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+}
+
+</style>
+
+</head>
+<body data-page="add" class="flex h-screen w-full bg-[#f8fafc] font-sans overflow-hidden text-gray-800">
+  
+<aside class="w-64 bg-white border-r border-gray-200 flex flex-col h-full shadow-sm flex-shrink-0 z-10">
+  <div class="p-6 flex flex-col items-center border-b border-gray-100">
+    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 shadow-md mb-4">
+      <img src="https://raw.githubusercontent.com/nguyendangminh278-coder/IE/eff661a05eb44f2e7ae590e6a1342074c244af0f/546629072_122145434072821270_378096859647605807_n.webp"
+           alt="LiM_E Logo"
+           class="w-full h-full object-cover"
+           onerror="this.src='https://ui-avatars.com/api/?name=LiM+E&background=67BCAF&color=fff'" />
+    </div>
+    <h1 class="text-2xl font-bold text-primary tracking-wider">LiM_E</h1>
+    <p class="text-xs text-gray-500 mt-1">IELTS Speaking Prep</p>
+  </div>
+
+  <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
+    <a href="index.html" data-nav-page="index" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200">
+      <i data-lucide="home" class="w-5 h-5"></i>
+      <span>Trang chủ</span>
+    </a>
+    <a href="luyentheocau.html" data-nav-page="practice" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200">
+      <i data-lucide="mic" class="w-5 h-5"></i>
+      <span>Luyện theo câu</span>
+    </a>
+    <a href="thithu.html" data-nav-page="mock" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200">
+      <i data-lucide="headphones" class="w-5 h-5"></i>
+      <span>Thi thử</span>
+    </a>
+    <a href="tuthemcau.html" data-nav-page="add" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200">
+      <i data-lucide="plus-circle" class="w-5 h-5"></i>
+      <span>Tự thêm câu</span>
+    </a>
+  </nav>
+</aside>
+
+  <div class="flex-1 flex flex-col h-full overflow-hidden">
+    
+<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 flex-shrink-0 z-10">
+  <div class="text-gray-500 font-medium truncate">Thêm câu hỏi mới</div>
+  <div class="flex items-center space-x-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition ml-4 flex-shrink-0">
+    <div class="text-right hidden md:block">
+      <div class="text-sm font-bold text-gray-800">Học viên IELTS</div>
+      <div class="text-xs text-primary flex items-center justify-end">
+        <span class="w-2 h-2 rounded-full bg-primary mr-1"></span> Online
+      </div>
+    </div>
+    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/30">
+      <i data-lucide="user" class="w-5 h-5"></i>
+    </div>
+  </div>
+</header>
+
+    <main class="flex-1 overflow-y-auto relative">
+      <div class="p-8 max-w-3xl mx-auto animation-fade-in">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-gray-800 flex items-center">
+            <i data-lucide="plus-circle" class="w-8 h-8 text-primary mr-3"></i>
+            Tự thêm học liệu
+          </h2>
+          <p class="text-gray-500 mt-2 pl-11">Thêm các câu hỏi hoặc đoạn văn bản mới vào kho lưu trữ cá nhân của bạn để luyện tập.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
+          <div class="flex p-1 mb-6 space-x-1 bg-gray-100 rounded-xl">
+            <button onclick="switchAddTab('question')" id="tab-add-question" class="w-1/2 py-2.5 text-sm font-medium rounded-lg shadow-sm bg-white text-primary transition-all">Thêm câu hỏi luyện tập</button>
+            <button onclick="switchAddTab('text')" id="tab-add-text" class="w-1/2 py-2.5 text-sm font-medium rounded-lg text-gray-500 hover:text-gray-700 transition-all">Thêm đoạn văn bản</button>
+          </div>
+
+          <div id="form-add-question" class="space-y-6 block animation-fade-in">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Chọn phần thi</label>
+              <select class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                <option>Part 1 - Introduction and Interview</option>
+                <option>Part 2 - Long Turn</option>
+                <option>Part 3 - Discussion</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Chủ đề (Topic)</label>
+              <input type="text" placeholder="Ví dụ: Work, Study, Hometown..." class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Nội dung câu hỏi</label>
+              <textarea rows="4" placeholder="Nhập nội dung câu hỏi IELTS bằng tiếng Anh..." class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"></textarea>
+            </div>
+            <div class="flex justify-end pt-4">
+              <a href="index.html" class="px-6 py-2 rounded-xl text-gray-500 hover:bg-gray-100 mr-4 transition-all">Hủy bỏ</a>
+              <button class="px-6 py-2 rounded-xl bg-primary text-white hover:bg-[#58a69a] flex items-center transition-all shadow-md" type="button">
+                <i data-lucide="save" class="w-4 h-4 mr-2"></i> Lưu câu hỏi
+              </button>
+            </div>
+          </div>
+
+          <div id="form-add-text" class="space-y-6 hidden animation-fade-in">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Tiêu đề đoạn văn</label>
+              <input type="text" placeholder="Ví dụ: Bài mẫu IELTS Speaking Part 2 - Describe a book..." class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Nội dung văn bản</label>
+              <textarea rows="6" placeholder="Nhập/Dán đoạn văn bản tiếng Anh vào đây để luyện đọc hoặc luyện nói..." class="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"></textarea>
+            </div>
+            <div class="flex justify-end pt-4">
+              <a href="index.html" class="px-6 py-2 rounded-xl text-gray-500 hover:bg-gray-100 mr-4 transition-all">Hủy bỏ</a>
+              <button class="px-6 py-2 rounded-xl bg-primary text-white hover:bg-[#58a69a] flex items-center transition-all shadow-md" type="button">
+                <i data-lucide="save" class="w-4 h-4 mr-2"></i> Lưu đoạn văn
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  setActiveNav();
+  if (window.lucide) lucide.createIcons();
+  bindMicSelectListener();
+  initWaveCanvas();
+
+  await requestMicPermissionOnLoad();
+  await initAudioDevices();
+});
+
+const MIC_SESSION_PROMPT_KEY = 'lim_e_mic_prompted_this_session';
+const MIC_SELECTED_DEVICE_KEY = 'lim_e_selected_mic_device';
+const MIC_LABEL_MAP_KEY = 'lim_e_mic_label_map';
+
+function setActiveNav() {
+  const currentPage = document.body.dataset.page;
+  document.querySelectorAll('[data-nav-page]').forEach(link => {
+    const activeClasses = ['bg-primary/10', 'text-primary', 'font-medium', 'shadow-sm'];
+    const inactiveClasses = ['text-gray-600', 'hover:bg-gray-50', 'hover:text-primary'];
+
+    activeClasses.forEach(c => link.classList.remove(c));
+    inactiveClasses.forEach(c => link.classList.remove(c));
+
+    if (link.dataset.navPage === currentPage) {
+      activeClasses.forEach(c => link.classList.add(c));
+    } else {
+      inactiveClasses.forEach(c => link.classList.add(c));
+    }
+  });
+}
+
+// ============================
+// GHI ÂM DÙNG CHUNG
+// ============================
+let mediaRecorder = null;
+let audioChunks = [];
+let recordStream = null;
+let micPermissionGranted = false;
+let currentAudioUrl = null;
+
+let audioContext = null;
+let analyserNode = null;
+let sourceNode = null;
+let timeDomainData = null;
+let waveformFrameId = null;
+let waveformHistory = [];
+let waveformCanvas = null;
+let waveformCtx = null;
+
+async function getMicPermissionState() {
+  if (!navigator.permissions?.query) return 'unknown';
+  try {
+    const status = await navigator.permissions.query({ name: 'microphone' });
+    return status.state;
+  } catch (_) {
+    return 'unknown';
+  }
+}
+
+function isMicSecureContext() {
+  return window.isSecureContext || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+}
+
+async function requestMicPermissionOnLoad() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    console.warn('Trình duyệt không hỗ trợ truy cập microphone.');
+    return false;
+  }
+
+  if (!isMicSecureContext()) {
+    console.warn('Microphone thường chỉ hoạt động trên HTTPS hoặc localhost.');
+    return false;
+  }
+
+  const permissionState = await getMicPermissionState();
+
+  if (permissionState === 'granted') {
+    micPermissionGranted = true;
+    return true;
+  }
+
+  if (permissionState === 'denied') {
+    micPermissionGranted = false;
+    showMicPermissionMessage('Bạn đã chặn microphone cho website này. Hãy bật lại quyền mic trong trình duyệt.');
+    return false;
+  }
+
+  // Chỉ tự bật popup xin quyền 1 lần trong cùng 1 session/tab.
+  if (sessionStorage.getItem(MIC_SESSION_PROMPT_KEY) === '1') {
+    return false;
+  }
+
+  sessionStorage.setItem(MIC_SESSION_PROMPT_KEY, '1');
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    micPermissionGranted = true;
+    stream.getTracks().forEach(track => track.stop());
+    hideMicPermissionMessage();
+    return true;
+  } catch (err) {
+    console.warn('Chưa thể lấy quyền microphone lúc tải trang:', err);
+    showMicPermissionMessage('Website chưa có quyền microphone. Bạn có thể cho phép mic khi bấm bắt đầu ghi âm.');
+    return false;
+  }
+}
+
+function bindMicSelectListener() {
+  const micSelect = document.getElementById('mic-select');
+  if (!micSelect || micSelect.dataset.bound === 'true') return;
+
+  micSelect.addEventListener('change', () => {
+    saveSelectedMic();
+    updateSelectedMicLabel();
+  });
+
+  micSelect.dataset.bound = 'true';
+}
+
+function getStoredLabelMap() {
+  try {
+    return JSON.parse(localStorage.getItem(MIC_LABEL_MAP_KEY) || '{}');
+  } catch (_) {
+    return {};
+  }
+}
+
+function setStoredLabel(deviceId, label) {
+  if (!deviceId || !label) return;
+  const labelMap = getStoredLabelMap();
+  labelMap[deviceId] = label;
+  localStorage.setItem(MIC_LABEL_MAP_KEY, JSON.stringify(labelMap));
+}
+
+function getStoredLabel(deviceId) {
+  if (!deviceId) return '';
+  const labelMap = getStoredLabelMap();
+  return labelMap[deviceId] || '';
+}
+
+function buildFallbackDeviceLabel(device, index) {
+  const storedLabel = getStoredLabel(device.deviceId);
+  if (storedLabel) return storedLabel;
+
+  if (device.deviceId === 'default') return 'Mặc định - Microphone';
+  if (device.deviceId === 'communications') return 'Truyền thông - Microphone';
+
+  return `Microphone ${index + 1}`;
+}
+
+async function initAudioDevices(retryCount = 0) {
+  const micSelect = document.getElementById('mic-select');
+  if (!micSelect || !navigator.mediaDevices?.enumerateDevices) return;
+
+  bindMicSelectListener();
+
+  const previousValue = micSelect.value || localStorage.getItem(MIC_SELECTED_DEVICE_KEY) || '';
+  micSelect.innerHTML = '<option value="">Đang tải danh sách mic...</option>';
+
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+
+    if (audioInputDevices.length === 0) {
+      micSelect.innerHTML = '<option value="">Không tìm thấy microphone</option>';
+      updateSelectedMicLabel();
+      return;
+    }
+
+    micSelect.innerHTML = '';
+
+    let hasAnyRealLabel = false;
+
+    audioInputDevices.forEach((device, index) => {
+      const option = document.createElement('option');
+      option.value = device.deviceId;
+
+      const displayLabel = device.label?.trim() || buildFallbackDeviceLabel(device, index);
+      if (device.label?.trim()) hasAnyRealLabel = true;
+
+      option.textContent = displayLabel;
+      option.title = displayLabel;
+      micSelect.appendChild(option);
+
+      if (device.label?.trim()) setStoredLabel(device.deviceId, device.label.trim());
+    });
+
+    const match = [...micSelect.options].find(opt => opt.value === previousValue);
+    if (match) {
+      micSelect.value = previousValue;
+    } else if (micSelect.options.length > 0) {
+      micSelect.selectedIndex = 0;
+    }
+
+    saveSelectedMic();
+    updateSelectedMicLabel();
+
+    // Nếu đã có quyền nhưng browser chưa kịp trả label thật, thử tải lại 1 lần nữa.
+    if (!hasAnyRealLabel && retryCount < 1) {
+      const permissionState = await getMicPermissionState();
+      if (permissionState === 'granted' || micPermissionGranted) {
+        await new Promise(resolve => setTimeout(resolve, 250));
+        return initAudioDevices(retryCount + 1);
+      }
+    }
+  } catch (err) {
+    console.error('Lỗi truy cập danh sách mic:', err);
+    micSelect.innerHTML = '<option value="">Không thể tải microphone</option>';
+    updateSelectedMicLabel();
+  }
+}
+
+function saveSelectedMic() {
+  const micSelect = document.getElementById('mic-select');
+  if (!micSelect) return;
+
+  const selectedOption = micSelect.options[micSelect.selectedIndex];
+  if (!selectedOption) return;
+
+  localStorage.setItem(MIC_SELECTED_DEVICE_KEY, selectedOption.value || '');
+  if (selectedOption.text) setStoredLabel(selectedOption.value, selectedOption.text);
+}
+
+function updateSelectedMicLabel() {
+  const micSelect = document.getElementById('mic-select');
+  const labelEl = document.getElementById('mic-selected-label');
+  if (!micSelect || !labelEl) return;
+
+  const selectedText = micSelect.options[micSelect.selectedIndex]?.text || 'Chưa có microphone';
+  labelEl.textContent = `Thiết bị đang chọn: ${selectedText}`;
+  labelEl.title = selectedText;
+  micSelect.title = selectedText;
+}
+
+function showMicPermissionMessage(message) {
+  const instruction = document.getElementById('record-instruction');
+  if (!instruction) return;
+  instruction.innerText = message;
+  instruction.classList.remove('text-gray-500');
+  instruction.classList.add('text-amber-600');
+}
+
+function hideMicPermissionMessage() {
+  const instruction = document.getElementById('record-instruction');
+  if (!instruction) return;
+  if (instruction.classList.contains('text-amber-600')) {
+    instruction.classList.remove('text-amber-600');
+    instruction.classList.add('text-gray-500');
+    instruction.innerText = 'Bấm nút bên dưới để bắt đầu ghi âm câu trả lời của bạn. Hệ thống sẽ tự động phân tích và chấm điểm.';
+  }
+}
+
+function initWaveCanvas() {
+  waveformCanvas = document.getElementById('waveform-canvas');
+  if (!waveformCanvas) return;
+
+  waveformCtx = waveformCanvas.getContext('2d');
+  resizeWaveCanvas();
+  window.addEventListener('resize', resizeWaveCanvas);
+  resetWaveVisualizer();
+}
+
+function resizeWaveCanvas() {
+  waveformCanvas = document.getElementById('waveform-canvas');
+  if (!waveformCanvas) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const rect = waveformCanvas.getBoundingClientRect();
+  waveformCanvas.width = Math.max(1, Math.floor(rect.width * dpr));
+  waveformCanvas.height = Math.max(1, Math.floor(rect.height * dpr));
+
+  if (waveformCtx) {
+    waveformCtx.setTransform(1, 0, 0, 1, 0, 0);
+    waveformCtx.scale(dpr, dpr);
+  }
+}
+
+function startWaveVisualizer(stream) {
+  waveformCanvas = document.getElementById('waveform-canvas');
+  if (!waveformCanvas) return;
+
+  if (!audioContext || audioContext.state === 'closed') {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  if (audioContext.state === 'suspended') audioContext.resume();
+
+  stopWaveVisualizer(false);
+
+  analyserNode = audioContext.createAnalyser();
+  analyserNode.fftSize = 512;
+  analyserNode.smoothingTimeConstant = 0.82;
+
+  sourceNode = audioContext.createMediaStreamSource(stream);
+  sourceNode.connect(analyserNode);
+
+  timeDomainData = new Uint8Array(analyserNode.fftSize);
+  waveformHistory = [];
+
+  drawWaveFrame();
+}
+
+function drawWaveFrame() {
+  if (!waveformCanvas || !waveformCtx || !analyserNode) return;
+
+  const width = waveformCanvas.clientWidth;
+  const height = waveformCanvas.clientHeight;
+  const midY = height / 2;
+  const cursorX = Math.floor(width * 0.82);
+  const barWidth = 3;
+  const gap = 2;
+  const step = barWidth + gap;
+  const maxBarsBeforeCursor = Math.max(1, Math.floor((cursorX - 8) / step));
+
+  analyserNode.getByteTimeDomainData(timeDomainData);
+
+  let sumSquares = 0;
+  for (let i = 0; i < timeDomainData.length; i++) {
+    const normalized = (timeDomainData[i] - 128) / 128;
+    sumSquares += normalized * normalized;
+  }
+  const rms = Math.sqrt(sumSquares / timeDomainData.length);
+  const smoothed = Math.min(1, rms * 3.4);
+
+  waveformHistory.push(smoothed);
+  if (waveformHistory.length > maxBarsBeforeCursor) waveformHistory.shift();
+
+  waveformCtx.clearRect(0, 0, width, height);
+
+  waveformCtx.fillStyle = '#f8fafc';
+  waveformCtx.fillRect(0, 0, width, height);
+
+  waveformCtx.strokeStyle = '#d1d5db';
+  waveformCtx.lineWidth = 1;
+  waveformCtx.beginPath();
+  waveformCtx.moveTo(0, midY);
+  waveformCtx.lineTo(width, midY);
+  waveformCtx.stroke();
+
+  const startX = cursorX - waveformHistory.length * step;
+  waveformCtx.fillStyle = '#4b5563';
+  waveformHistory.forEach((value, index) => {
+    const x = startX + index * step;
+    const amplitude = Math.max(3, value * (height * 0.42));
+    waveformCtx.fillRect(x, midY - amplitude, barWidth, amplitude * 2);
+  });
+
+  waveformCtx.strokeStyle = '#ef4444';
+  waveformCtx.lineWidth = 2;
+  waveformCtx.beginPath();
+  waveformCtx.moveTo(cursorX, 6);
+  waveformCtx.lineTo(cursorX, height - 6);
+  waveformCtx.stroke();
+
+  waveformFrameId = requestAnimationFrame(drawWaveFrame);
+}
+
+function stopWaveVisualizer(reset = true) {
+  if (waveformFrameId) {
+    cancelAnimationFrame(waveformFrameId);
+    waveformFrameId = null;
+  }
+
+  if (sourceNode) {
+    try { sourceNode.disconnect(); } catch (_) {}
+    sourceNode = null;
+  }
+
+  analyserNode = null;
+  timeDomainData = null;
+
+  if (reset) resetWaveVisualizer();
+}
+
+function resetWaveVisualizer() {
+  waveformCanvas = document.getElementById('waveform-canvas');
+  if (!waveformCanvas) return;
+  if (!waveformCtx) waveformCtx = waveformCanvas.getContext('2d');
+  resizeWaveCanvas();
+
+  const width = waveformCanvas.clientWidth;
+  const height = waveformCanvas.clientHeight;
+  const midY = height / 2;
+
+  waveformCtx.clearRect(0, 0, width, height);
+  waveformCtx.fillStyle = '#f8fafc';
+  waveformCtx.fillRect(0, 0, width, height);
+
+  waveformCtx.strokeStyle = '#d1d5db';
+  waveformCtx.lineWidth = 1;
+  waveformCtx.beginPath();
+  waveformCtx.moveTo(0, midY);
+  waveformCtx.lineTo(width, midY);
+  waveformCtx.stroke();
+
+  waveformCtx.fillStyle = '#94a3b8';
+  waveformCtx.font = '13px sans-serif';
+  waveformCtx.textAlign = 'center';
+  waveformCtx.fillText('Biểu đồ âm thanh sẽ hiển thị khi bắt đầu ghi âm', width / 2, midY - 14);
+}
+
+async function startRecording() {
+  const micSelect = document.getElementById('mic-select');
+  const deviceId = micSelect?.value || '';
+  const constraints = { audio: deviceId ? { deviceId: { exact: deviceId } } : true };
+
+  try {
+    recordStream = await navigator.mediaDevices.getUserMedia(constraints);
+    micPermissionGranted = true;
+    hideMicPermissionMessage();
+
+    mediaRecorder = new MediaRecorder(recordStream);
+    audioChunks = [];
+
+    mediaRecorder.ondataavailable = event => {
+      if (event.data.size > 0) audioChunks.push(event.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      stopWaveVisualizer(true);
+
+      const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      if (currentAudioUrl) URL.revokeObjectURL(currentAudioUrl);
+      currentAudioUrl = URL.createObjectURL(audioBlob);
+      const audioElem = document.getElementById('audio-playback');
+      if (audioElem) audioElem.src = currentAudioUrl;
+
+      toggleEl('audio-playback-container', false);
+      toggleEl('btn-start-record', false);
+      toggleEl('btn-stop-record', true);
+      toggleEl('mic-select-container', false);
+
+      setText('record-status-text', 'Đã thu âm xong');
+      setText('record-instruction', 'Bạn có thể nghe lại bản ghi âm bên dưới.');
+
+      const instruction = document.getElementById('record-instruction');
+      if (instruction) {
+        instruction.classList.remove('text-red-500', 'text-amber-600');
+        instruction.classList.add('text-gray-500');
+      }
+
+      const micCircle = document.getElementById('mic-animation-circle');
+      const micInner = document.getElementById('mic-icon-inner');
+      if (micCircle) {
+        micCircle.classList.remove('bg-red-50', 'border-red-200', 'scale-110', 'record-pulse');
+        micCircle.classList.add('bg-white', 'border-gray-100');
+      }
+      if (micInner) {
+        micInner.classList.remove('text-red-500');
+        micInner.classList.add('text-gray-300');
+      }
+      if (window.lucide) lucide.createIcons();
+    };
+
+    mediaRecorder.start();
+    startWaveVisualizer(recordStream);
+
+    toggleEl('btn-start-record', true);
+    toggleEl('btn-stop-record', false);
+    toggleEl('mic-select-container', true);
+    toggleEl('audio-playback-container', true);
+
+    setText('record-status-text', 'Đang thu âm...');
+    setText('record-instruction', "Vui lòng nói rõ ràng vào micro. Bấm 'Dừng ghi âm' khi hoàn tất.");
+
+    const instruction = document.getElementById('record-instruction');
+    if (instruction) {
+      instruction.classList.remove('text-red-500', 'text-amber-600');
+      instruction.classList.add('text-gray-500');
+    }
+
+    const micCircle = document.getElementById('mic-animation-circle');
+    const micInner = document.getElementById('mic-icon-inner');
+    if (micCircle) {
+      micCircle.classList.remove('bg-white', 'border-gray-100');
+      micCircle.classList.add('bg-red-50', 'border-red-200', 'scale-110', 'record-pulse');
+    }
+    if (micInner) {
+      micInner.classList.remove('text-gray-300');
+      micInner.classList.add('text-red-500');
+    }
+
+    await initAudioDevices();
+
+    if (window.lucide) lucide.createIcons();
+  } catch (err) {
+    console.error('Không thể bắt đầu ghi âm:', err);
+    setText('record-instruction', 'Không thể truy cập micro. Vui lòng cấp quyền (Allow) trên trình duyệt để ghi âm.');
+    const instruction = document.getElementById('record-instruction');
+    if (instruction) {
+      instruction.classList.remove('text-gray-500', 'text-amber-600');
+      instruction.classList.add('text-red-500');
+    }
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+  if (recordStream) {
+    recordStream.getTracks().forEach(track => track.stop());
+    recordStream = null;
+  }
+}
+
+function resetRecording() {
+  stopRecording();
+  stopWaveVisualizer(true);
+
+  toggleEl('audio-playback-container', true);
+  toggleEl('btn-start-record', false);
+  toggleEl('btn-stop-record', true);
+  toggleEl('mic-select-container', false);
+
+  setText('record-status-text', 'Sẵn sàng thu âm');
+  setText('record-instruction', 'Bấm nút bên dưới để bắt đầu ghi âm câu trả lời của bạn. Hệ thống sẽ tự động phân tích và chấm điểm.');
+
+  const instruction = document.getElementById('record-instruction');
+  if (instruction) {
+    instruction.classList.remove('text-red-500', 'text-amber-600');
+    instruction.classList.add('text-gray-500');
+  }
+
+  const micCircle = document.getElementById('mic-animation-circle');
+  const micInner = document.getElementById('mic-icon-inner');
+  if (micCircle) {
+    micCircle.classList.remove('bg-red-50', 'border-red-200', 'scale-110', 'record-pulse');
+    micCircle.classList.add('bg-white', 'border-gray-100');
+  }
+  if (micInner) {
+    micInner.classList.remove('text-red-500');
+    micInner.classList.add('text-gray-300');
+  }
+
+  const audioElem = document.getElementById('audio-playback');
+  if (audioElem) audioElem.src = '';
+  if (currentAudioUrl) {
+    URL.revokeObjectURL(currentAudioUrl);
+    currentAudioUrl = null;
+  }
+  audioChunks = [];
+  updateSelectedMicLabel();
+
+  if (window.lucide) lucide.createIcons();
+}
+
+function toggleEl(id, hide) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (hide) el.classList.add('hidden');
+  else el.classList.remove('hidden');
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.innerText = value;
+}
+
+function openLinkWithParams(file, params = {}) {
+  const url = new URL(file, window.location.href);
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== null && value !== undefined && value !== '') url.searchParams.set(key, value);
+  });
+  window.location.href = url.toString();
+}
+
+</script>
+
+<script>
+
+function switchAddTab(tab) {
+  const btnQuestion = document.getElementById('tab-add-question');
+  const btnText = document.getElementById('tab-add-text');
+  const formQuestion = document.getElementById('form-add-question');
+  const formText = document.getElementById('form-add-text');
+
+  if (tab === 'question') {
+    btnQuestion.className = "w-1/2 py-2.5 text-sm font-medium rounded-lg shadow-sm bg-white text-primary transition-all";
+    btnText.className = "w-1/2 py-2.5 text-sm font-medium rounded-lg text-gray-500 hover:text-gray-700 transition-all";
+    formQuestion.classList.remove('hidden');
+    formText.classList.add('hidden');
+  } else {
+    btnText.className = "w-1/2 py-2.5 text-sm font-medium rounded-lg shadow-sm bg-white text-primary transition-all";
+    btnQuestion.className = "w-1/2 py-2.5 text-sm font-medium rounded-lg text-gray-500 hover:text-gray-700 transition-all";
+    formText.classList.remove('hidden');
+    formQuestion.classList.add('hidden');
+  }
+}
+
+</script>
+</body>
+</html>

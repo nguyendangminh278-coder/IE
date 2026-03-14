@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiM_E IELTS Prep - Thi thử</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#67BCAF',
+              50: '#f0f9f8',
+              100: '#dcf1ee',
+              200: '#bce0db',
+              300: '#90c8c1',
+              400: '#67BCAF',
+              500: '#469b8e',
+              600: '#357d72'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .animation-fade-in { animation: fadeIn 0.28s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    .record-pulse { animation: pulseRing 1.05s ease-in-out infinite; }
+    @keyframes pulseRing { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .9; } 100% { transform: scale(1); opacity: 1; } }
+    .waveform-canvas { width: 100%; height: 112px; display: block; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); border-radius: 18px; border: 1px solid #e2e8f0; }
+    .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+<body data-page="mock" class="flex h-screen w-full bg-slate-50 font-sans overflow-hidden text-slate-800">
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col h-full shadow-sm flex-shrink-0 z-10">
+    <div class="p-6 flex flex-col items-center border-b border-slate-100">
+      <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/20 shadow-md mb-4">
+        <img src="https://raw.githubusercontent.com/nguyendangminh278-coder/IE/eff661a05eb44f2e7ae590e6a1342074c244af0f/546629072_122145434072821270_378096859647605807_n.webp" alt="LiM_E Logo" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=LiM+E&background=67BCAF&color=fff'" />
+      </div>
+      <h1 class="text-2xl font-bold text-primary tracking-wider">LiM_E</h1>
+      <p class="text-xs text-slate-500 mt-1">IELTS Speaking Prep</p>
+    </div>
+    <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
+      <a href="index.html" data-nav-page="index" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200"><i data-lucide="home" class="w-5 h-5"></i><span>Trang chủ</span></a>
+      <a href="luyentheocau.html" data-nav-page="practice" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200"><i data-lucide="mic" class="w-5 h-5"></i><span>Luyện theo câu</span></a>
+      <a href="thithu.html" data-nav-page="mock" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200"><i data-lucide="headphones" class="w-5 h-5"></i><span>Thi thử</span></a>
+      <a href="tuthemcau.html" data-nav-page="add" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200"><i data-lucide="plus-circle" class="w-5 h-5"></i><span>Tự thêm câu</span></a>
+    </nav>
+  </aside>
+
+  <div class="flex-1 flex flex-col h-full overflow-hidden">
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 flex-shrink-0 z-10">
+      <div class="text-slate-500 font-medium truncate" id="topbar-title">Khu vực Thi thử</div>
+      <div class="flex items-center space-x-4 cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition ml-4 flex-shrink-0">
+        <div class="text-right hidden md:block">
+          <div class="text-sm font-bold text-slate-800">Học viên IELTS</div>
+          <div class="text-xs text-primary flex items-center justify-end"><span class="w-2 h-2 rounded-full bg-primary mr-1"></span>Online</div>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/30"><i data-lucide="user" class="w-5 h-5"></i></div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto relative">
+      <section id="mock-home" class="p-8 max-w-6xl mx-auto animation-fade-in">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-slate-800 flex items-center"><i data-lucide="headphones" class="w-8 h-8 text-primary mr-3"></i>Thi thử IELTS Speaking</h2>
+          <p class="text-slate-500 mt-2 pl-11">Chọn phần thi để hệ thống tạo đề ngẫu nhiên và mô phỏng đúng nhịp thi Speaking.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <button onclick="openSetup('Part 1')" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition text-left group">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-105 transition"><i data-lucide="message-circle" class="w-7 h-7"></i></div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Part 1</h3>
+            <p class="text-slate-500 text-sm leading-6">Random 1 chủ đề mở đầu ở Part 1, sau đó tự chuyển sang chủ đề khác cho đến đủ 5 phút.</p>
+          </button>
+          <button onclick="openSetup('Part 2')" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition text-left group">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-105 transition"><i data-lucide="sticky-note" class="w-7 h-7"></i></div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Part 2</h3>
+            <p class="text-slate-500 text-sm leading-6">Random 1 cue card, có 1 phút chuẩn bị và 2 phút nói kèm ghi âm tự động.</p>
+          </button>
+          <button onclick="openSetup('Part 3')" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition text-left group">
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-105 transition"><i data-lucide="messages-square" class="w-7 h-7"></i></div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Part 3</h3>
+            <p class="text-slate-500 text-sm leading-6">Random 1 bộ câu hỏi thảo luận từ Part 3 và đếm ngược 5 phút cho toàn phần thi.</p>
+          </button>
+          <button onclick="openSetup('Full Test')" class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition text-left group">
+            <div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-5 group-hover:scale-105 transition"><i data-lucide="target" class="w-7 h-7"></i></div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Full Test</h3>
+            <p class="text-slate-500 text-sm leading-6">Ghép đủ Part 1, Part 2, Part 3 thành một bài thi hoàn chỉnh như thi thật.</p>
+          </button>
+        </div>
+      </section>
+
+      <section id="mock-setup" class="hidden p-8 max-w-6xl mx-auto animation-fade-in">
+        <button onclick="backToHome()" class="inline-flex items-center text-slate-500 hover:text-primary transition mb-6"><i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>Quay lại chọn phần thi</button>
+        <div class="grid grid-cols-1 xl:grid-cols-[1.3fr_0.7fr] gap-6">
+          <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span id="setup-badge" class="px-3 py-1 rounded-full text-sm font-semibold bg-primary/10 text-primary">Part 1</span>
+              <span class="text-sm text-slate-500">Đề sẽ được random mỗi lần bắt đầu.</span>
+            </div>
+            <h2 id="setup-title" class="text-3xl font-bold text-slate-800 mb-2">Sẵn sàng vào thi thử</h2>
+            <p id="setup-desc" class="text-slate-500 leading-7 mb-6">Hệ thống sẽ tạo đề ngẫu nhiên và giữ đúng logic thi cho phần bạn chọn.</p>
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-slate-800">Đề sẽ được tạo như sau</h3>
+                <button onclick="refreshPlan()" class="text-primary text-sm font-semibold hover:underline">Đổi đề khác</button>
+              </div>
+              <div id="setup-plan-list" class="space-y-3"></div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+              <h3 class="font-bold text-slate-800 mb-4">Thiết bị thu âm</h3>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Chọn microphone</label>
+              <div class="relative mb-3">
+                <select id="mic-select" class="w-full border border-slate-300 rounded-2xl p-3 pr-10 appearance-none focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white text-slate-700">
+                  <option value="">Đang tải danh sách mic...</option>
+                </select>
+                <i data-lucide="chevron-down" class="w-4 h-4 absolute right-4 top-4 text-slate-400 pointer-events-none"></i>
+              </div>
+              <p id="mic-selected-label" class="text-sm text-slate-500 leading-6 break-words">Thiết bị đang chọn: Đang tải danh sách mic...</p>
+            </div>
+            <div class="bg-primary/5 border border-primary/20 rounded-3xl p-6">
+              <h3 class="font-bold text-slate-800 mb-3">Lưu ý</h3>
+              <ul class="text-sm text-slate-600 leading-7 space-y-1">
+                <li>Part 1 và Part 3 ghi âm liên tục trong 5 phút.</li>
+                <li>Part 2 có 1 phút note, sau đó 2 phút nói có ghi âm.</li>
+                <li>Full Test sẽ tự chạy lần lượt đủ 3 phần.</li>
+              </ul>
+            </div>
+            <button onclick="startMockExam()" class="w-full bg-primary text-white rounded-2xl px-6 py-4 font-bold text-lg shadow-md hover:bg-primary/90 transition flex items-center justify-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i>Bắt đầu thi thử</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="mock-session" class="hidden h-full p-6 xl:p-8 animation-fade-in">
+        <div class="h-full grid grid-cols-1 xl:grid-cols-[1.25fr_0.75fr] gap-6">
+          <div class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden flex flex-col min-h-0">
+            <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3 mb-2 flex-wrap">
+                  <span id="session-section-badge" class="px-3 py-1 rounded-full text-sm font-semibold bg-primary/10 text-primary">Part 1</span>
+                  <span id="session-stage-pill" class="px-3 py-1 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-600">Đang ghi âm</span>
+                </div>
+                <h2 id="session-title" class="text-2xl font-bold text-slate-800">Part 1 - Chủ đề ngẫu nhiên</h2>
+                <p id="session-subtitle" class="text-slate-500 mt-1">Hãy trả lời từng câu và bấm xác nhận khi hoàn thành.</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-xs uppercase tracking-[0.16em] text-slate-400 mb-1">Thời gian còn lại</div>
+                <div id="session-timer" class="text-4xl font-extrabold text-slate-800 tabular-nums">05:00</div>
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 bg-slate-50/60">
+              <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm mb-6">
+                <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+                  <div>
+                    <div class="text-sm uppercase tracking-[0.18em] text-slate-400 mb-1">Chủ đề / Bộ câu hỏi</div>
+                    <h3 id="session-topic-title" class="text-xl font-bold text-slate-800">Topic</h3>
+                  </div>
+                  <div id="session-question-counter" class="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm">Câu 1 / 4</div>
+                </div>
+                <div id="session-main-card" class="space-y-4"></div>
+              </div>
+              <div class="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm mb-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="font-bold text-slate-800">Biểu đồ âm thanh</h3>
+                  <span id="wave-status-text" class="text-sm text-slate-500">Đang chờ ghi âm</span>
+                </div>
+                <canvas id="waveform-canvas" class="waveform-canvas"></canvas>
+              </div>
+              <div id="session-actions" class="flex flex-wrap gap-3"></div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6 min-h-0">
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-slate-800">Tiến trình bài thi</h3>
+                <button onclick="cancelExam()" class="text-sm text-red-500 hover:underline">Thoát bài thi</button>
+              </div>
+              <div id="session-outline" class="space-y-3"></div>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+              <h3 class="font-bold text-slate-800 mb-4">Thiết bị đang dùng</h3>
+              <p id="session-mic-name" class="text-sm leading-6 text-slate-600">Chưa chọn microphone</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm min-h-0 overflow-y-auto">
+              <h3 class="font-bold text-slate-800 mb-4">Mẹo trong lúc thi</h3>
+              <div id="session-tips" class="space-y-3 text-sm text-slate-600 leading-7"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mock-result" class="hidden p-8 max-w-6xl mx-auto animation-fade-in">
+        <button onclick="backToHome()" class="inline-flex items-center text-slate-500 hover:text-primary transition mb-6"><i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>Quay về chọn đề khác</button>
+        <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm mb-6">
+          <div class="flex flex-wrap items-start justify-between gap-6">
+            <div>
+              <span id="result-badge" class="px-3 py-1 rounded-full text-sm font-semibold bg-primary/10 text-primary">Kết quả</span>
+              <h2 id="result-title" class="text-3xl font-bold text-slate-800 mt-3">Mock Speaking Summary</h2>
+              <p id="result-desc" class="text-slate-500 mt-2 leading-7">Đây là bảng tổng kết sau lượt thi vừa rồi.</p>
+            </div>
+            <div class="w-28 h-28 rounded-full bg-primary/10 border-8 border-primary/20 flex items-center justify-center text-primary text-4xl font-extrabold" id="result-overall-band">6.5</div>
+          </div>
+        </div>
+        <div id="result-section-cards" class="grid grid-cols-1 xl:grid-cols-3 gap-6"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+const PRACTICE_TOPICS = {
+  'Part 1': {
+    "Introduce yourself": [
+      "Do you work or study?",
+      "What are you learning or working on these days?",
+      "Do you like your work or studies?",
+      "What do you usually do in a typical day?"
+    ],
+    "Daily Routine": [
+      "What time do you usually wake up?",
+      "What do you usually do in the morning?",
+      "Do you have a busy day?",
+      "What do you usually do before going to bed?"
+    ],
+    "Views": [
+      "Have you seen an unforgettable and beautiful view or scenery?",
+      "Do you like taking pictures of different views?",
+      "Do you prefer views in urban areas or rural areas?",
+      "Do you prefer views in your own country or in other countries?"
+    ],
+    "Childhood activities": [
+      "What were your favourite activities when you were a child?",
+      "Did you prefer to do activities alone or with a group of people when you were a child?",
+      "Are there any differences between the activities you liked when you were a child and those you like now?",
+      "What are your favourite activities?"
+    ],
+    "Building": [
+      "Are there tall buildings near your home?",
+      "Do you take photos of buildings?",
+      "Do you want to live in a tall building?",
+      "Is there a building that you would like to visit?"
+    ],
+    "Scenery": [
+      "Do you like to take scenery pictures?",
+      "Do you prefer the mountains or the sea?",
+      "Do you look out the window at the scenery when travelling by bus or car?",
+      "What are the most beautiful sights you have seen while travelling?"
+    ],
+    "Reading": [
+      "Do you like reading?",
+      "Do you prefer scanning or detailed reading?",
+      "When do you need to read carefully, and when not?",
+      "Do you prefer to read on paper or on a screen?"
+    ],
+    "Sports team": [
+      "Have you ever been part of a sports team?",
+      "Are team sports popular in your culture?",
+      "Do you like watching team games? Why?",
+      "What are the differences between team sports and individual sports?"
+    ],
+    "Walking": [
+      "Do you walk a lot?",
+      "Where did you go for a walk lately?",
+      "Did you often go outside to have a walk when you were a child?",
+      "Why do people like to walk in parks?"
+    ],
+    "Typing": [
+      "When did you learn how to type on a keyboard?",
+      "Do you type on a desktop or laptop keyboard every day?",
+      "How do you improve your typing?",
+      "Do you prefer typing or handwriting?"
+    ],
+    "Food": [
+      "What kind of food did you like when you were young?",
+      "Has your favourite food changed since you were a child?",
+      "What is your favourite food?",
+      "Do you eat different foods at different times of the year?"
+    ],
+    "Hobby": [
+      "Do you have any hobbies?",
+      "Did you have any hobbies when you were a child?",
+      "Do you have a hobby that you've had since childhood?",
+      "Do you have the same hobbies as your family members?"
+    ],
+    "Life stages": [
+      "Do you enjoy being the age you are now?",
+      "What did you often do with your friends in your childhood?",
+      "How do people remember each stage of their lives?",
+      "At what age do you think people are the happiest?"
+    ],
+    "Gifts": [
+      "Have you ever received a great gift?",
+      "What gift have you received recently?",
+      "Do you think you are good at choosing gifts?",
+      "What do you consider when choosing a gift?"
+    ],
+    "Day off": [
+      "When was the last time you had a few days off?",
+      "What do you usually do when you have days off?",
+      "Do you usually spend your days off with your parents or with your friends?",
+      "What would you like to do if you had a day off tomorrow?"
+    ],
+    "Morning time": [
+      "Do you like getting up early in the morning?",
+      "What do you usually do in the morning?",
+      "Do you spend your mornings doing the same things on both weekends and weekdays? Why?",
+      "What did you do in the morning when you were little? Why?"
+    ],
+    "Dreams": [
+      "Can you remember the dreams you had?",
+      "Do you think dreams have special meanings?",
+      "Do you share your dreams with others?",
+      "Do you want to make your dreams come true?"
+    ],
+    "Pets and Animals": [
+      "Have you ever had a pet before?",
+      "What's your favourite animal? Why?",
+      "Where do you prefer to keep your pet, indoors or outdoors?",
+      "What is the most popular animal in Vietnam?"
+    ],
+    "Doing something well": [
+      "Do you have an experience when you did something well?",
+      "Do you have an experience when your teacher thought you did a good job?",
+      "Do you often tell your friends when they do something well?"
+    ],
+    "Rules": [
+      "Are there any rules for students at your school?",
+      "Do you prefer to have more or fewer rules at school?",
+      "Do you think students would benefit more from more rules?",
+      "Have you ever had a really strict teacher?"
+    ],
+    "Public places": [
+      "Do you often go to public places with your friends?",
+      "Have you ever talked with someone you don’t know in public places?",
+      "Do you wear headphones in public places?",
+      "Would you like to see more public places near where you live?"
+    ],
+    "Staying with old people": [
+      "Have you ever worked with old people?",
+      "Are you happy to work with people who are older than you?",
+      "Do you enjoy spending time with old people?",
+      "What are the benefits of being friends with or working with old people?"
+    ],
+    "Growing vegetables/fruits": [
+      "Is growing vegetables popular in your country?",
+      "Do many people grow vegetables in your city?",
+      "Are you interested in growing vegetables and fruits?",
+      "Do you think it’s easy to grow vegetables?"
+    ],
+    "Going out": [
+      "Do you always take your mobile phone with you when going out?",
+      "Do you often bring cash with you?",
+      "How often do you use cash?",
+      "Do you bring food or snacks with you when going out?"
+    ],
+    "Taking photos": [
+      "Do you like taking photos?",
+      "Do you like taking selfies?",
+      "What is your favourite family photo?",
+      "Do you like to print out your photos or just keep them on your phone or camera?"
+    ],
+    "Spare time": [
+      "Do you often have free time?",
+      "What do you usually do in your spare time?",
+      "Do you have more free time on weekdays or at weekends?",
+      "Which day do you have more free time on, Saturday or Sunday?"
+    ],
+    "Memory": [
+      "Are you good at memorising things?",
+      "What do you need to remember in your daily life?",
+      "How do you remember important things?",
+      "Have you ever forgotten something important?"
+    ],
+    "Advertisement": [
+      "Do you often see advertisements when you are on your phone or computer?",
+      "Do you see a lot of advertising on trains or other transport?",
+      "Do you like advertisements?",
+      "What kind of advertising do you like?"
+    ],
+    "Crowded place": [
+      "Is the city where you live crowded?",
+      "Is there a crowded place near where you live?",
+      "Do you like crowded places?",
+      "Do most people like crowded places?"
+    ],
+    "Chatting/Conversation": [
+      "Do you like chatting with friends?",
+      "What do you usually chat about with friends?",
+      "Do you prefer to chat with a group of people or with only one friend?",
+      "Do you prefer to communicate face-to-face or via social media?"
+    ],
+    "The city you live in": [
+      "What city do you live in?",
+      "How long have you lived in this city?",
+      "Is this city your permanent residence?",
+      "Do you like this city? Why?"
+    ],
+    "Happy things": [
+      "What made you happy when you were little?",
+      "Is there anything that has made you feel happy lately?",
+      "Do you feel happy when buying new things?",
+      "Do you think people are happy when buying new things?"
+    ],
+    "Shoes": [
+      "Do you like buying shoes? How often?",
+      "How much money do you usually spend on shoes?",
+      "Which do you prefer, fashionable shoes or comfortable shoes?",
+      "Have you ever bought shoes online?"
+    ],
+    "Museum": [
+      "Are there many museums in your hometown?",
+      "Do you often visit a museum?",
+      "When was the last time you visited a museum?",
+      "Do you think museums are important?"
+    ],
+    "Having a break": [
+      "How often do you take a rest or a break?",
+      "What do you usually do when you are resting?",
+      "Do you take a nap when you are taking your rest?",
+      "How do you feel after taking a nap?"
+    ],
+    "Borrowing/lending": [
+      "Have you ever borrowed money from others?",
+      "Have you borrowed books from others?",
+      "Do you mind if others borrow money from you?",
+      "Do you like to lend things to others?"
+    ],
+    "Sharing": [
+      "Did your parents teach you to share when you were a child?",
+      "What kind of things do you like to share with others?",
+      "What kind of things are not suitable for sharing?",
+      "Do you have anything to share with others recently?"
+    ],
+    "Plants": [
+      "Do you keep plants at home?",
+      "Do you know anything about growing a plant?",
+      "What plant did you grow when you were young?",
+      "Do Vietnamese people send plants as gifts?"
+    ],
+    "Work or studies": [
+      "What subjects are you studying?",
+      "Why did you choose to study that subject?",
+      "Do you like your subject?",
+      "Do you think that your subject is popular in your country?"
+    ],
+    "Home & Accommodation": [
+      "Who do you live with?",
+      "Do you live in an apartment or a house?",
+      "What kinds of accommodation do you live in?",
+      "Can you describe the place where you live?"
+    ],
+    "Hometown": [
+      "Where is your hometown?",
+      "Is that a big city or a small place?",
+      "Please describe your hometown a little.",
+      "What's your hometown famous for?"
+    ],
+    "The area you live in": [
+      "Do you like the area that you live in?",
+      "Do you live in a noisy or a quiet area?",
+      "Are the people in your neighborhood nice and friendly?",
+      "Do you know any of your neighbours?"
+    ]
+  },
+  'Part 2': {
+    'Topic: Person': [
+      "Describe a person who likes to look after the natural world",
+      "Describe a person who often helps others",
+      "Describe a child who loves drawing/painting",
+      "Describe a person who makes plans a lot and is good at planning",
+      "Describe a famous person you would like to meet",
+      "Describe a person who solved a problem in a smart way"
+    ],
+    'Topic: Object': [
+      "Describe a short-term job you want to have in a foreign country",
+      "Describe an event you attended in which you didn’t enjoy the music played",
+      "Describe one of your friends who learned something without a teacher",
+      "Describe a piece of technology (not a phone) that you would like to own",
+      "Describe a perfect job you would like to have in the future",
+      "Describe a program or app on your computer or phone",
+      "Describe an interesting building",
+      "Describe something that you can’t live without (not a computer/phone)",
+      "Describe an item on which you spent more than expected",
+      "Describe something important that has been kept in your family for a long time",
+      "Describe a book you read that you found useful",
+      "Describe a wild animal that you want to learn more about",
+      "Describe an important old thing that your family has kept for a long time",
+      "Describe a great dinner you and your friends or family members enjoyed",
+      "Describe an interesting traditional story",
+      "Describe an area/subject of science (biology, robotics, etc.) that you are interested in and would like to learn more about",
+      "Describe a TV or online program you like to watch",
+      "Describe a good habit your friend has and you want to develop",
+      "Describe a natural talent (sports, music, etc.) you want to improve",
+      "Describe a toy you liked in your childhood"
+    ],
+    'Topic: Activity': [
+      "Describe a time when you gave advice to others",
+      "Describe a movie you watched and enjoyed recently",
+      "Describe a time when you felt proud of a family member",
+      "Describe a bicycle/motorcycle/car trip you would like to go",
+      "Describe an occasion when many people were smiling",
+      "Describe an occasion when you were not allowed to use your mobile phone",
+      "Describe a time when you encouraged someone to do something that he/she didn't want to do",
+      "Describe a time you needed to use your imagination",
+      "Describe a long journey you had and would like to take again",
+      "Describe a time when you broke something",
+      "Describe an important decision made with the help of other people",
+      "Describe a time when the electricity suddenly went off",
+      "Describe an exciting activity you have tried for the first time",
+      "Describe a time when you received good service in a shop/store",
+      "Describe a time when you waited for something special that would happen",
+      "Describe a time you saw something interesting on social media",
+      "Describe the time when you first talked in a foreign language",
+      "Describe an occasion when you lost your way",
+      "Describe a time when someone apologized to you"
+    ],
+    'Topic: Place': [
+      "Describe a city that you have been to and would like to visit again",
+      "Describe a shop/store you enjoy visiting",
+      "Describe a natural place (e.g. parks, mountains, etc.)",
+      "Describe a quiet place you like to go"
+    ]
+  },
+  'Part 3': {
+    "Person - A person who likes to look after the natural world": [
+      "Is it important to teach students environmental protection at school?",
+      "What can people do to protect the natural world?",
+      "Is it easy for children in cities to get close to the natural world?"
+    ],
+    "Person - A person who often helps others": [
+      "Why are employees reluctant to ask their managers for help?",
+      "Do you think schools should teach children to do household chores?",
+      "Who should people ask for help, colleagues or family members?"
+    ],
+    "Person - A child who loves drawing/painting": [
+      "What are the differences between reading a book and visiting a museum?",
+      "How do artworks inspire people?",
+      "Do you think galleries and museums should be free of charge?"
+    ],
+    "Person - A person who makes plans a lot and is good at planning": [
+      "Should children ask their teachers and parents for advice when making plans?",
+      "What activities do we need to plan ahead?",
+      "Do you think choosing a college major is closely related to a person’s future career?"
+    ],
+    "Person - A famous person you would like to meet": [
+      "Do you want to be a famous person?",
+      "Is it easy to become famous in your country?",
+      "Do people become famous because of their talent?"
+    ],
+    "Person - A person who solved a problem in a smart way": [
+      "Is it important for schools to identify and develop each student’s talents?",
+      "Do you think smart children are happier than other children?",
+      "Why does modern society need talents of all kinds?"
+    ],
+    "Object - A short-term job you want to have in a foreign country": [
+      "Why are some people unwilling to work in other countries?",
+      "What kind of work can young people do in foreign countries?",
+      "What personal skills are required to work in an international company?"
+    ],
+    "Object - An event you attended in which you didn’t enjoy the music played": [
+      "What are the differences between listening to music at home and at a live concert?",
+      "Why do many people like listening to music while doing sports?",
+      "What kind of music events are there in your country?"
+    ],
+    "Object - One of your friends who learned something without a teacher": [
+      "Do you think it is good for older adults to continue learning?",
+      "Do you think enterprises should provide training for their employees?",
+      "Is it better to focus on a few subjects or to learn many subjects?"
+    ],
+    "Object - A piece of technology (not a phone) that you would like to own": [
+      "What are the differences between making friends in real life and online?",
+      "What negative effects does technology have on people’s relationships?",
+      "Do you think technology has changed the way people communicate?"
+    ],
+    "Object - A perfect job you would like to have in the future": [
+      "What kind of jobs are the most popular in your country?",
+      "Is salary the main reason why people choose a certain job?",
+      "What should people consider when choosing jobs?"
+    ],
+    "Object - A program or app on your computer or phone": [
+      "What do you think about some countries banning children from using social media?",
+      "Do you think young people are more and more reliant on these programs?",
+      "Should parents limit their children’s use of computer programs and computer games? Why and how?"
+    ],
+    "Object - An interesting building": [
+      "Is it better to live in a new building or an old one?",
+      "Do you think it’s reasonable to charge an entry fee for visiting interesting buildings?",
+      "Why do people like to visit historical sites?"
+    ],
+    "Object - Something that you can’t live without (not a computer/phone)": [
+      "Do you think it is good for a child to always take his or her favourite toy with them all the time?",
+      "Why do all children like toys?",
+      "What do you think influences people to buy new things?"
+    ],
+    "Object - An item on which you spent more than expected": [
+      "What kind of things are people happy to pay a high price for?",
+      "Do you think it is the rich people’s responsibility to donate money to people in need?",
+      "Do people buy things they don’t need?"
+    ],
+    "Object - Something important that has been kept in your family for a long time": [
+      "Why do people visit museums?",
+      "What are the benefits of technology for learning history?",
+      "What’s the influence of technology on museums?"
+    ],
+    "Object - A book you read that you found useful": [
+      "What should we do to prevent modern libraries from closing down?",
+      "Have libraries changed a lot with the development of the internet?",
+      "Which one is better, paper books or e-books?"
+    ],
+    "Object - A wild animal that you want to learn more about": [
+      "Is it more important to protect wild animals or the environment?",
+      "Should people educate children to protect wild animals?",
+      "Why do some people attach more importance to protecting rare animals?"
+    ],
+    "Object - An important old thing that your family has kept for a long time": [
+      "What can we learn from a museum?",
+      "What can we see in a museum?",
+      "What are the differences between the things that people keep today and the things that people kept in the past?"
+    ],
+    "Object - A great dinner you and your friends or family members enjoyed": [
+      "People are spending less and less time having meals with their families these days. Is this good or bad?",
+      "What do people often talk about during meals?",
+      "Is it a hassle to prepare a meal at home?"
+    ],
+    "Object - An interesting traditional story": [
+      "Is a good storyline important for a movie?",
+      "Do all stories for children have happy endings?",
+      "What can children learn from stories?"
+    ],
+    "Object - An area/subject of science (biology, robotics, etc.) that you are interested in and would like to learn more about": [
+      "Should scientists explain the research process to the public?",
+      "How do you get to know about scientific news?",
+      "Should people continue to study science after graduating from school?"
+    ],
+    "Object - A TV or online program you like to watch": [
+      "Do you think we can acquire knowledge from watching TV programs?",
+      "Do you think watching talk shows is a waste of time?",
+      "Do teachers play videos in class in your country?"
+    ],
+    "Object - A good habit your friend has and you want to develop": [
+      "What can we do to get rid of bad habits?",
+      "How do we develop bad habits?",
+      "Why do some habits change when people get older?"
+    ],
+    "Object - A natural talent (sports, music, etc.) you want to improve": [
+      "Why do some people like to show their talents online?",
+      "Do you think it’s important to develop children’s talents?",
+      "Do you think it is more interesting to watch famous people's or ordinary people's shows?"
+    ],
+    "Object - A toy you liked in your childhood": [
+      "What are the advantages and disadvantages of modern toys?",
+      "What's the difference between the toys boys play with and girls play with?",
+      "Do you think parents should buy more toys for their kids or spend more time with them?"
+    ],
+    "Activity - A time when you gave advice to others": [
+      "When would old people ask young people for advice?",
+      "Why do some people think it is better to ask for advice from friends than from parents?",
+      "What are the problems if you ask too many people for advice?"
+    ],
+    "Activity - A movie you watched and enjoyed recently": [
+      "Why do people prefer to watch movies in the cinema?",
+      "Do you think successful movies should have well-known actors or actresses in leading roles?",
+      "Do you think only well-known directors can create the best movies?"
+    ],
+    "Activity - A time when you felt proud of a family member": [
+      "What do you think about children working hard just for grades?",
+      "Do rewards help a child become better?",
+      "On what occasions would adults be proud of themselves?"
+    ],
+    "Activity - A bicycle/motorcycle/car trip you would like to go": [
+      "What do you think of the future of electric cars?",
+      "Why do more people own and drive private cars now?",
+      "How are the transportation systems in urban areas and rural areas different?"
+    ],
+    "Activity - An occasion when many people were smiling": [
+      "Are there any occasions when people need to pretend to smile?",
+      "Is smiling important in your culture?",
+      "Do people smile more when they are younger or older?"
+    ],
+    "Activity - An occasion when you were not allowed to use your mobile phone": [
+      "How does the internet benefit people?",
+      "What are examples of good and poor phone manners?",
+      "Do you think it is necessary to have laws on the use of mobile phones?"
+    ],
+    "Activity - A time when you encouraged someone to do something that he/she didn't want to do": [
+      "How can employers encourage their staff?",
+      "Should children do everything their parents ask them to do?",
+      "Do you think some people are better than others at persuading?"
+    ],
+    "Activity - A time you needed to use your imagination": [
+      "How important is imagination to children?",
+      "What games help develop children's imagination?",
+      "What subjects are helpful for children's imagination?"
+    ],
+    "Activity - A long journey you had and would like to take again": [
+      "Why do some people prefer to travel abroad?",
+      "Why do some people prefer to travel in their own country?",
+      "Why do some people like making long journeys?"
+    ],
+    "Activity - A time when you broke something": [
+      "Do you think elderly people should teach young people how to fix things?",
+      "Is the older generation better at fixing things?",
+      "Do you think handmade clothes are more valuable?"
+    ],
+    "Activity - An important decision made with the help of other people": [
+      "Why do some people like to ask others for advice?",
+      "Do people like to ask for advice more for their personal life or their work?",
+      "Why are some people unwilling to make quick decisions?"
+    ],
+    "Activity - A time when the electricity suddenly went off": [
+      "Do people use more electricity now than before?",
+      "Is it difficult for the government to replace all the petrol cars with electric cars?",
+      "How did people manage to live without electricity in the ancient world?"
+    ],
+    "Activity - An exciting activity you have tried for the first time": [
+      "What are the benefits of trying new things?",
+      "What can people learn from doing dangerous activities?",
+      "Do you think that children adapt to new things more easily than adults?"
+    ],
+    "Activity - A time when you received good service in a shop/store": [
+      "Can consumption drive economic growth?",
+      "What are the advantages and disadvantages of shopping online?",
+      "What are the differences between online shopping and in-store shopping?"
+    ],
+    "Activity - A time when you waited for something special that would happen": [
+      "Where do children learn to be patient, at home or at school?",
+      "Why are some people unwilling to wait?",
+      "What are the positive and negative effects of waiting on society?"
+    ],
+    "Activity - A time you saw something interesting on social media": [
+      "Do you think people spend too much time on social media?",
+      "Are there any people who shouldn't use social media?",
+      "What do you think of making friends on social network?"
+    ],
+    "Activity - The time when you first talked in a foreign language": [
+      "Which stage of life do you think is the best for learning a foreign language?",
+      "Does learning a foreign language help in finding a job?",
+      "Do you think minority languages will disappear?"
+    ],
+    "Activity - An occasion when you lost your way": [
+      "How do people react when they get lost?",
+      "Is a paper map still necessary?",
+      "How can people find their way when they are lost?"
+    ],
+    "Activity - A time when someone apologized to you": [
+      "Are women better than men at recognizing emotions?",
+      "Do you think every “sorry” is from the bottom of the heart?",
+      "On what occasion do people usually apologize to others?"
+    ],
+    "Place - A city that you have been to and would like to visit again": [
+      "What should the government do to improve citizens’ safety?",
+      "Are there any changes in your city?",
+      "Do you think people in the countryside are friendlier than people in the city?"
+    ],
+    "Place - A shop/store you enjoy visiting": [
+      "What are the differences between shopping online and in-store?",
+      "What are the differences in the shopping habits of different age groups?",
+      "What are the differences between shopping in street markets and big shopping malls?"
+    ],
+    "Place - A natural place (e.g. parks, mountains, etc.)": [
+      "Do you think it is a good idea to let animals stay in local parks for people to see?",
+      "Are there any wild animals in the city?",
+      "What can people gain from going to natural places?"
+    ],
+    "Place - A quiet place you like to go": [
+      "Why are there more noises made at home now than in the past?",
+      "Why do old people prefer to live in quiet places?",
+      "Do you think only old people have time for leisure?"
+    ]
+  }
+};
+  </script>
+
+  <script>
+    const MIC_SELECTED_DEVICE_KEY = 'lim_e_selected_mic_device';
+    const MIC_LABEL_MAP_KEY = 'lim_e_mic_label_map';
+    const MIC_SESSION_PROMPT_KEY = 'lim_e_mic_prompted_this_session';
+
+    let currentMode = null;
+    let currentPlan = [];
+    let currentSectionIndex = 0;
+    let currentSection = null;
+    let currentQuestionIndex = 0;
+    let examResults = [];
+    let activeCountdown = null;
+    let countdownSeconds = 0;
+    let timerOnExpire = null;
+    let timerOnTick = null;
+    let pendingRecordingResolve = null;
+
+    let mediaRecorder = null;
+    let recordStream = null;
+    let audioChunks = [];
+    let audioContext = null;
+    let analyserNode = null;
+    let sourceNode = null;
+    let timeDomainData = null;
+    let waveformCtx = null;
+    let waveformCanvas = null;
+    let waveformHistory = [];
+    let waveformFrameId = null;
+    let micPermissionGranted = false;
+    let isFinishingSection = false;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      setActiveNav();
+      initWaveCanvas();
+      bindMicSelectListener();
+      if (window.lucide) lucide.createIcons();
+      await requestMicPermissionOnLoad();
+      await initAudioDevices();
+      syncSessionMicName();
+    });
+
+    function setActiveNav() {
+      const currentPage = document.body.dataset.page;
+      document.querySelectorAll('[data-nav-page]').forEach(link => {
+        const active = ['bg-primary/10', 'text-primary', 'font-medium', 'shadow-sm'];
+        const inactive = ['text-slate-600', 'hover:bg-slate-50', 'hover:text-primary'];
+        active.forEach(c => link.classList.remove(c));
+        inactive.forEach(c => link.classList.remove(c));
+        (link.dataset.navPage === currentPage ? active : inactive).forEach(c => link.classList.add(c));
+      });
+    }
+
+    function $(id) { return document.getElementById(id); }
+    function formatTime(totalSec) {
+      const m = Math.floor(totalSec / 60).toString().padStart(2, '0');
+      const s = Math.floor(totalSec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+    function sample(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function shuffleCopy(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+    function roundHalf(num) { return Math.round(num * 2) / 2; }
+    function clamp(num, min, max) { return Math.max(min, Math.min(max, num)); }
+
+    function setTopbar(text) { $('topbar-title').textContent = text; }
+    function showSection(id) {
+      ['mock-home','mock-setup','mock-session','mock-result'].forEach(key => $(key).classList.add('hidden'));
+      $(id).classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function getStoredLabelMap() {
+      try { return JSON.parse(localStorage.getItem(MIC_LABEL_MAP_KEY) || '{}'); }
+      catch { return {}; }
+    }
+    function setStoredLabel(deviceId, label) {
+      if (!deviceId || !label) return;
+      const map = getStoredLabelMap();
+      map[deviceId] = label;
+      localStorage.setItem(MIC_LABEL_MAP_KEY, JSON.stringify(map));
+    }
+    function getStoredLabel(deviceId) { return getStoredLabelMap()[deviceId] || ''; }
+    function bindMicSelectListener() {
+      const micSelect = $('mic-select');
+      if (!micSelect || micSelect.dataset.bound === '1') return;
+      micSelect.addEventListener('change', () => { saveSelectedMic(); updateSelectedMicLabel(); syncSessionMicName(); });
+      micSelect.dataset.bound = '1';
+    }
+    async function getMicPermissionState() {
+      if (!navigator.permissions?.query) return 'unknown';
+      try { return (await navigator.permissions.query({ name: 'microphone' })).state; }
+      catch { return 'unknown'; }
+    }
+    function isMicSecureContext() {
+      return window.isSecureContext || ['localhost','127.0.0.1'].includes(location.hostname);
+    }
+    async function requestMicPermissionOnLoad() {
+      if (!navigator.mediaDevices?.getUserMedia || !isMicSecureContext()) return false;
+      const state = await getMicPermissionState();
+      if (state === 'granted') { micPermissionGranted = true; return true; }
+      if (state === 'denied') return false;
+      if (sessionStorage.getItem(MIC_SESSION_PROMPT_KEY) === '1') return false;
+      sessionStorage.setItem(MIC_SESSION_PROMPT_KEY, '1');
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        micPermissionGranted = true;
+        stream.getTracks().forEach(t => t.stop());
+        return true;
+      } catch { return false; }
+    }
+    function fallbackDeviceLabel(device, index) {
+      if (getStoredLabel(device.deviceId)) return getStoredLabel(device.deviceId);
+      if (device.deviceId === 'default') return 'Mặc định - Microphone';
+      if (device.deviceId === 'communications') return 'Truyền thông - Microphone';
+      return `Microphone ${index + 1}`;
+    }
+    async function initAudioDevices() {
+      const micSelect = $('mic-select');
+      if (!micSelect || !navigator.mediaDevices?.enumerateDevices) return;
+      const prev = micSelect.value || localStorage.getItem(MIC_SELECTED_DEVICE_KEY) || '';
+      micSelect.innerHTML = '<option value="">Đang tải danh sách mic...</option>';
+      try {
+        const devices = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audioinput');
+        if (!devices.length) {
+          micSelect.innerHTML = '<option value="">Không tìm thấy microphone</option>';
+          updateSelectedMicLabel();
+          return;
+        }
+        micSelect.innerHTML = '';
+        devices.forEach((device, index) => {
+          const option = document.createElement('option');
+          option.value = device.deviceId;
+          const label = device.label?.trim() || fallbackDeviceLabel(device, index);
+          option.textContent = label;
+          option.title = label;
+          micSelect.appendChild(option);
+          if (device.label?.trim()) setStoredLabel(device.deviceId, device.label.trim());
+        });
+        const match = [...micSelect.options].find(opt => opt.value === prev);
+        if (match) micSelect.value = prev;
+        else micSelect.selectedIndex = 0;
+        saveSelectedMic();
+        updateSelectedMicLabel();
+        syncSessionMicName();
+      } catch (err) {
+        console.error(err);
+        micSelect.innerHTML = '<option value="">Không thể tải microphone</option>';
+        updateSelectedMicLabel();
+      }
+    }
+    function saveSelectedMic() {
+      const micSelect = $('mic-select');
+      if (!micSelect) return;
+      const option = micSelect.options[micSelect.selectedIndex];
+      if (!option) return;
+      localStorage.setItem(MIC_SELECTED_DEVICE_KEY, option.value || '');
+      if (option.textContent) setStoredLabel(option.value, option.textContent);
+    }
+    function updateSelectedMicLabel() {
+      const micSelect = $('mic-select');
+      const label = $('mic-selected-label');
+      if (!micSelect || !label) return;
+      const text = micSelect.options[micSelect.selectedIndex]?.textContent || 'Chưa có microphone';
+      label.textContent = `Thiết bị đang chọn: ${text}`;
+    }
+    function syncSessionMicName() {
+      const micSelect = $('mic-select');
+      const target = $('session-mic-name');
+      if (!target) return;
+      const text = micSelect?.options[micSelect.selectedIndex]?.textContent || 'Chưa chọn microphone';
+      target.textContent = text;
+    }
+
+    function initWaveCanvas() {
+      waveformCanvas = $('waveform-canvas');
+      if (!waveformCanvas) return;
+      waveformCtx = waveformCanvas.getContext('2d');
+      resizeWaveCanvas();
+      window.addEventListener('resize', resizeWaveCanvas);
+      resetWaveVisualizer();
+    }
+    function resizeWaveCanvas() {
+      waveformCanvas = $('waveform-canvas');
+      if (!waveformCanvas || !waveformCtx) return;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = waveformCanvas.getBoundingClientRect();
+      waveformCanvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      waveformCanvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      waveformCtx.setTransform(1,0,0,1,0,0);
+      waveformCtx.scale(dpr, dpr);
+    }
+    function resetWaveVisualizer() {
+      waveformCanvas = $('waveform-canvas');
+      if (!waveformCanvas) return;
+      if (!waveformCtx) waveformCtx = waveformCanvas.getContext('2d');
+      resizeWaveCanvas();
+      const width = waveformCanvas.clientWidth;
+      const height = waveformCanvas.clientHeight;
+      const mid = height / 2;
+      waveformCtx.clearRect(0,0,width,height);
+      waveformCtx.fillStyle = '#f8fafc';
+      waveformCtx.fillRect(0,0,width,height);
+      waveformCtx.strokeStyle = '#dbe2ea';
+      waveformCtx.lineWidth = 1;
+      waveformCtx.beginPath();
+      waveformCtx.moveTo(0, mid);
+      waveformCtx.lineTo(width, mid);
+      waveformCtx.stroke();
+      waveformCtx.fillStyle = '#94a3b8';
+      waveformCtx.font = '13px sans-serif';
+      waveformCtx.textAlign = 'center';
+      waveformCtx.fillText('Waveform sẽ hiện khi bắt đầu ghi âm', width / 2, mid - 14);
+      $('wave-status-text').textContent = 'Đang chờ ghi âm';
+    }
+    function startWaveVisualizer(stream) {
+      waveformCanvas = $('waveform-canvas');
+      if (!waveformCanvas) return;
+      if (!audioContext || audioContext.state === 'closed') audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === 'suspended') audioContext.resume();
+      stopWaveVisualizer(false);
+      analyserNode = audioContext.createAnalyser();
+      analyserNode.fftSize = 512;
+      analyserNode.smoothingTimeConstant = 0.82;
+      sourceNode = audioContext.createMediaStreamSource(stream);
+      sourceNode.connect(analyserNode);
+      timeDomainData = new Uint8Array(analyserNode.fftSize);
+      waveformHistory = [];
+      $('wave-status-text').textContent = 'Đang bắt tín hiệu micro';
+      drawWaveFrame();
+    }
+    function drawWaveFrame() {
+      if (!waveformCanvas || !waveformCtx || !analyserNode) return;
+      const width = waveformCanvas.clientWidth;
+      const height = waveformCanvas.clientHeight;
+      const midY = height / 2;
+      const cursorX = Math.floor(width * 0.82);
+      const barWidth = 3;
+      const gap = 2;
+      const step = barWidth + gap;
+      const maxBars = Math.max(1, Math.floor((cursorX - 8) / step));
+      analyserNode.getByteTimeDomainData(timeDomainData);
+      let sumSquares = 0;
+      for (let i = 0; i < timeDomainData.length; i++) {
+        const normalized = (timeDomainData[i] - 128) / 128;
+        sumSquares += normalized * normalized;
+      }
+      const rms = Math.sqrt(sumSquares / timeDomainData.length);
+      const smoothed = Math.min(1, rms * 3.6);
+      waveformHistory.push(smoothed);
+      if (waveformHistory.length > maxBars) waveformHistory.shift();
+      waveformCtx.clearRect(0,0,width,height);
+      waveformCtx.fillStyle = '#f8fafc';
+      waveformCtx.fillRect(0,0,width,height);
+      waveformCtx.strokeStyle = '#e2e8f0';
+      waveformCtx.lineWidth = 1;
+      waveformCtx.beginPath(); waveformCtx.moveTo(0, midY); waveformCtx.lineTo(width, midY); waveformCtx.stroke();
+      const startX = cursorX - waveformHistory.length * step;
+      waveformCtx.fillStyle = '#475569';
+      waveformHistory.forEach((value, index) => {
+        const x = startX + index * step;
+        const amplitude = Math.max(3, value * (height * 0.42));
+        waveformCtx.fillRect(x, midY - amplitude, barWidth, amplitude * 2);
+      });
+      waveformCtx.strokeStyle = '#ef4444';
+      waveformCtx.lineWidth = 2;
+      waveformCtx.beginPath(); waveformCtx.moveTo(cursorX, 8); waveformCtx.lineTo(cursorX, height - 8); waveformCtx.stroke();
+      $('wave-status-text').textContent = 'Đang ghi âm';
+      waveformFrameId = requestAnimationFrame(drawWaveFrame);
+    }
+    function stopWaveVisualizer(reset = true) {
+      if (waveformFrameId) cancelAnimationFrame(waveformFrameId);
+      waveformFrameId = null;
+      if (sourceNode) { try { sourceNode.disconnect(); } catch {} sourceNode = null; }
+      analyserNode = null;
+      timeDomainData = null;
+      if (reset) resetWaveVisualizer();
+    }
+
+    function openSetup(mode) {
+      currentMode = mode;
+      currentPlan = buildPlan(mode);
+      renderSetup();
+      setTopbar(`Chuẩn bị thi - ${mode}`);
+      showSection('mock-setup');
+    }
+    function backToHome() {
+      stopCountdown();
+      if (recordStream) stopCapture();
+      currentSection = null;
+      examResults = [];
+      currentPlan = [];
+      currentMode = null;
+      setTopbar('Khu vực Thi thử');
+      showSection('mock-home');
+    }
+    function refreshPlan() {
+      if (!currentMode) return;
+      currentPlan = buildPlan(currentMode);
+      renderSetup();
+    }
+    function renderSetup() {
+      $('setup-badge').textContent = currentMode;
+      const titles = {
+        'Part 1': 'Thi thử Part 1',
+        'Part 2': 'Thi thử Part 2',
+        'Part 3': 'Thi thử Part 3',
+        'Full Test': 'Thi thử Full Speaking'
+      };
+      const descs = {
+        'Part 1': 'Hệ thống sẽ random 1 chủ đề mở đầu ở Part 1. Khi bạn trả lời hết 1 chủ đề mà vẫn chưa hết 5 phút, hệ thống sẽ tự chuyển sang chủ đề khác.',
+        'Part 2': 'Hệ thống sẽ random 1 cue card trong toàn bộ Part 2. Bạn có 1 phút note, sau đó 2 phút trình bày và được chấm điểm mô phỏng.',
+        'Part 3': 'Hệ thống sẽ random 1 bộ câu hỏi thảo luận Part 3 và cho bạn 5 phút để trả lời lần lượt từng câu.',
+        'Full Test': 'Hệ thống sẽ ghép ngẫu nhiên đủ Part 1, Part 2, Part 3 và chạy lần lượt theo đúng trình tự thi Speaking.'
+      };
+      $('setup-title').textContent = titles[currentMode] || 'Thi thử';
+      $('setup-desc').textContent = descs[currentMode] || '';
+      const list = $('setup-plan-list');
+      list.innerHTML = currentPlan.map((section, idx) => `
+        <div class="flex gap-3 items-start rounded-2xl border border-slate-200 bg-white px-4 py-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center shrink-0">${idx + 1}</div>
+          <div>
+            <div class="font-semibold text-slate-800">${section.label}</div>
+            <div class="text-sm text-slate-500 leading-6">${section.preview}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function buildPlan(mode) {
+      if (mode === 'Part 1') return [pickPart1Section()];
+      if (mode === 'Part 2') return [pickPart2Section()];
+      if (mode === 'Part 3') return [pickPart3Section()];
+      return [pickPart1Section(), pickPart2Section(), pickPart3Section()];
+    }
+    function pickPart1Section() {
+      const entries = shuffleCopy(Object.entries(PRACTICE_TOPICS['Part 1']));
+      const [topic, questions] = entries[0];
+      return {
+        type: 'part1',
+        label: 'Part 1',
+        topic,
+        questions: [...questions],
+        preview: `Chủ đề mở đầu: ${topic} · đủ 5 phút, tự chuyển chủ đề khi cần`,
+        duration: 300,
+        topicPool: entries.map(([entryTopic, entryQuestions]) => ({
+          topic: entryTopic,
+          questions: [...entryQuestions]
+        })),
+        topicPointer: 0
+      };
+    }
+    function pickPart2Section() {
+      const entries = Object.entries(PRACTICE_TOPICS['Part 2']);
+      const [bucket, prompts] = sample(entries);
+      const prompt = sample(prompts);
+      return {
+        type: 'part2',
+        label: 'Part 2',
+        bucket,
+        prompt,
+        preview: `${bucket.replace('Topic: ', '')} · ${prompt}`,
+        prepDuration: 60,
+        speakDuration: 120
+      };
+    }
+    function pickPart3Section() {
+      const entries = Object.entries(PRACTICE_TOPICS['Part 3']);
+      const [setTitle, questions] = sample(entries);
+      return {
+        type: 'part3',
+        label: 'Part 3',
+        topic: setTitle,
+        questions: [...questions],
+        preview: `${setTitle} · ${questions.length} câu hỏi`,
+        duration: 300
+      };
+    }
+
+    async function startMockExam() {
+      if (!currentPlan.length) return;
+      examResults = [];
+      currentSectionIndex = 0;
+      setTopbar(`Đang thi - ${currentMode}`);
+      showSection('mock-session');
+      await startSection(currentPlan[currentSectionIndex]);
+    }
+
+    async function startSection(section) {
+      isFinishingSection = false;
+      currentSection = section;
+      currentQuestionIndex = 0;
+      renderOutline();
+      renderTips();
+      syncSessionMicName();
+      $('session-section-badge').textContent = section.label;
+      if (section.type === 'part1') return startQuestionSection(section, 'Part 1 - Interview', section.duration);
+      if (section.type === 'part3') return startQuestionSection(section, 'Part 3 - Discussion', section.duration);
+      if (section.type === 'part2') return startPart2Preparation(section);
+    }
+
+    function renderOutline() {
+      $('session-outline').innerHTML = currentPlan.map((section, idx) => {
+        let stateClass = 'border-slate-200 bg-white text-slate-500';
+        let badge = idx + 1;
+        if (idx < currentSectionIndex) { stateClass = 'border-emerald-200 bg-emerald-50 text-emerald-700'; badge = '<i data-lucide="check" class="w-4 h-4"></i>'; }
+        else if (idx === currentSectionIndex) stateClass = 'border-primary/30 bg-primary/5 text-primary';
+        return `
+          <div class="rounded-2xl border ${stateClass} px-4 py-3 flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/80 border border-current/20 flex items-center justify-center font-bold shrink-0">${badge}</div>
+            <div>
+              <div class="font-semibold">${section.label}</div>
+              <div class="text-xs leading-5 opacity-80">${section.preview}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderTips() {
+      const tips = currentSection?.type === 'part2'
+        ? [
+            'Trong 1 phút chuẩn bị, chỉ note ý chính: mở bài, 2 ý thân bài, 1 câu kết.',
+            'Khi vào 2 phút nói, hãy nói liên tục dù chưa hoàn hảo để giữ trôi chảy.',
+            'Nếu gần hết ý, hãy thêm cảm nhận cá nhân hoặc lý do để kéo dài tự nhiên.'
+          ]
+        : [
+            'Trả lời trực tiếp ngay câu hỏi đầu tiên, sau đó thêm 1 ví dụ hoặc 1 lý do ngắn.',
+            'Nếu bí ý, hãy dùng cấu trúc: answer + reason + example.',
+            'Bấm “Đã trả lời xong” khi bạn muốn chuyển sang câu tiếp theo trước khi hết giờ.'
+          ];
+      $('session-tips').innerHTML = tips.map(item => `
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3">${item}</div>
+      `).join('');
+    }
+
+
+    function moveToNextPart1Topic(section) {
+      if (!section?.topicPool?.length) return false;
+      section.topicPointer = (section.topicPointer + 1) % section.topicPool.length;
+      const nextTopic = section.topicPool[section.topicPointer];
+      if (!nextTopic) return false;
+      section.topic = nextTopic.topic;
+      section.questions = [...nextTopic.questions];
+      currentQuestionIndex = 0;
+      return true;
+    }
+
+    function renderQuestionSection(section, helperTitle='Câu hỏi hiện tại') {
+      $('session-topic-title').textContent = section.topic;
+      $('session-title').textContent = section.type === 'part1' ? 'Part 1 - Trả lời từng câu hỏi' : 'Part 3 - Discussion';
+      $('session-subtitle').textContent = section.type === 'part1'
+        ? 'Đồng hồ sẽ chạy đủ 5 phút. Khi xong 1 chủ đề, hệ thống tự chuyển sang chủ đề khác nếu vẫn còn thời gian.'
+        : 'Đồng hồ đang đếm ngược và micro đang ghi âm cho toàn bộ phần thi này.';
+      $('session-stage-pill').className = 'px-3 py-1 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-600';
+      $('session-stage-pill').textContent = 'Đang ghi âm';
+      const question = section.questions[currentQuestionIndex];
+      const topicIndexText = section.type === 'part1' && section.topicPool?.length
+        ? ` · Chủ đề ${section.topicPointer + 1} / ${section.topicPool.length}`
+        : '';
+      $('session-question-counter').textContent = `Câu ${currentQuestionIndex + 1} / ${section.questions.length}${topicIndexText}`;
+      $('session-main-card').innerHTML = `
+        <div class="text-sm uppercase tracking-[0.18em] text-slate-400">${helperTitle}</div>
+        <div class="text-2xl font-bold leading-relaxed text-slate-800">${question}</div>
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+          <div class="font-semibold text-slate-700 mb-2">Tất cả câu hỏi trong chủ đề hiện tại</div>
+          <div class="flex flex-wrap gap-2">
+            ${section.questions.map((q, idx) => `
+              <span class="px-3 py-2 rounded-xl text-sm border ${idx === currentQuestionIndex ? 'bg-primary/10 border-primary/30 text-primary font-semibold' : 'bg-white border-slate-200 text-slate-500'}">${idx + 1}. ${q}</span>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      const isLast = currentQuestionIndex === section.questions.length - 1;
+      const primaryLabel = section.type === 'part1'
+        ? (isLast ? 'Xong chủ đề này - sang chủ đề khác' : 'Đã trả lời xong câu hỏi')
+        : (isLast ? 'Hoàn thành phần này' : 'Đã trả lời xong câu hỏi');
+      $('session-actions').innerHTML = `
+        <button onclick="finishCurrentQuestion()" class="bg-primary text-white rounded-2xl px-6 py-3 font-semibold hover:bg-primary/90 transition shadow-sm">${primaryLabel}</button>
+        <button onclick="finishSectionEarly()" class="border border-slate-300 bg-white text-slate-700 rounded-2xl px-6 py-3 font-semibold hover:bg-slate-50 transition">Kết thúc sớm phần thi</button>
+      `;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function startQuestionSection(section, heading, duration) {
+      $('session-title').textContent = heading;
+      currentSection.runtime = { answered: 0, startedAt: Date.now() };
+      renderQuestionSection(section);
+      await startCapture();
+      startCountdown(duration, (sec) => $('session-timer').textContent = formatTime(sec), () => finishSectionNow('Hết thời gian phần thi'));
+    }
+
+    async function finishCurrentQuestion() {
+      if (!currentSection || !currentSection.questions) return;
+      if (!currentSection.runtime) currentSection.runtime = { answered: 0, startedAt: Date.now() };
+      currentSection.runtime.answered = (currentSection.runtime.answered || 0) + 1;
+      if (currentQuestionIndex < currentSection.questions.length - 1) {
+        currentQuestionIndex += 1;
+        renderQuestionSection(currentSection);
+        return;
+      }
+      if (currentSection.type === 'part1') {
+        moveToNextPart1Topic(currentSection);
+        renderQuestionSection(currentSection);
+        return;
+      }
+      await finishSectionNow('Bạn đã hoàn thành toàn bộ câu hỏi');
+    }
+
+    async function startPart2Preparation(section) {
+      $('session-topic-title').textContent = section.bucket.replace('Topic: ', '');
+      $('session-title').textContent = 'Part 2 - 1 phút chuẩn bị';
+      $('session-subtitle').textContent = 'Bạn có thể note nhanh ý chính. Chưa bắt đầu ghi âm ở giai đoạn này.';
+      $('session-stage-pill').className = 'px-3 py-1 rounded-full text-sm font-semibold bg-amber-50 text-amber-600';
+      $('session-stage-pill').textContent = 'Đang chuẩn bị';
+      $('session-question-counter').textContent = 'Cue Card';
+      $('session-main-card').innerHTML = `
+        <div class="text-sm uppercase tracking-[0.18em] text-slate-400">Cue card ngẫu nhiên</div>
+        <div class="text-2xl font-bold leading-relaxed text-slate-800">${section.prompt}</div>
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+          <div class="font-semibold text-slate-700 mb-2">Checklist note nhanh</div>
+          <ul class="space-y-2 text-slate-600 leading-7 text-sm">
+            <li>• Mở bài: bạn sẽ nói về ai / cái gì / khi nào</li>
+            <li>• Ý 1: chi tiết nổi bật nhất</li>
+            <li>• Ý 2: cảm xúc / lý do / kết quả</li>
+            <li>• Kết: tại sao chủ đề này đáng nhớ</li>
+          </ul>
+        </div>
+      `;
+      $('session-actions').innerHTML = `
+        <button onclick="startPart2Speaking()" class="bg-primary text-white rounded-2xl px-6 py-3 font-semibold hover:bg-primary/90 transition shadow-sm">Đã note xong - Bắt đầu nói</button>
+        <button onclick="finishSectionEarly()" class="border border-slate-300 bg-white text-slate-700 rounded-2xl px-6 py-3 font-semibold hover:bg-slate-50 transition">Bỏ phần này</button>
+      `;
+      resetWaveVisualizer();
+      startCountdown(section.prepDuration, (sec) => $('session-timer').textContent = formatTime(sec), () => startPart2Speaking());
+    }
+
+    async function startPart2Speaking() {
+      stopCountdown();
+      const section = currentSection;
+      if (!section) return;
+      $('session-title').textContent = 'Part 2 - 2 phút trình bày';
+      $('session-subtitle').textContent = 'Micro đã bật. Hãy nói liên tục trong tối đa 2 phút.';
+      $('session-stage-pill').className = 'px-3 py-1 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-600';
+      $('session-stage-pill').textContent = 'Đang ghi âm';
+      $('session-main-card').innerHTML = `
+        <div class="text-sm uppercase tracking-[0.18em] text-slate-400">Bạn đang trình bày về</div>
+        <div class="text-2xl font-bold leading-relaxed text-slate-800">${section.prompt}</div>
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 text-slate-600 leading-7 text-sm">
+          Hãy triển khai theo mạch: mở bài ngắn, mô tả chi tiết, lý do/ý nghĩa, rồi kết luận lại. Nếu hết ý, thêm ví dụ hoặc cảm xúc cá nhân.
+        </div>
+      `;
+      $('session-actions').innerHTML = `
+        <button onclick="finishSectionNow('Bạn chủ động kết thúc Part 2')" class="bg-primary text-white rounded-2xl px-6 py-3 font-semibold hover:bg-primary/90 transition shadow-sm">Đã nói xong</button>
+      `;
+      section.runtime = { answered: 1, startedAt: Date.now() };
+      await startCapture();
+      startCountdown(section.speakDuration, (sec) => $('session-timer').textContent = formatTime(sec), () => finishSectionNow('Hết 2 phút Part 2'));
+    }
+
+    function stopCountdown() {
+      if (activeCountdown) clearInterval(activeCountdown);
+      activeCountdown = null;
+      timerOnExpire = null;
+      timerOnTick = null;
+    }
+    function startCountdown(seconds, onTick, onExpire) {
+      stopCountdown();
+      countdownSeconds = seconds;
+      timerOnExpire = onExpire;
+      timerOnTick = onTick;
+      if (timerOnTick) timerOnTick(countdownSeconds);
+      activeCountdown = setInterval(() => {
+        countdownSeconds -= 1;
+        const tickHandler = timerOnTick;
+        const expireHandler = timerOnExpire;
+        if (tickHandler) tickHandler(Math.max(0, countdownSeconds));
+        if (countdownSeconds <= 0) {
+          if (activeCountdown) clearInterval(activeCountdown);
+          activeCountdown = null;
+          timerOnExpire = null;
+          timerOnTick = null;
+          if (expireHandler) expireHandler();
+        }
+      }, 1000);
+    }
+
+    async function startCapture() {
+      const deviceId = $('mic-select')?.value || '';
+      let stream = null;
+      try {
+        const constraints = { audio: deviceId ? { deviceId: { exact: deviceId } } : true };
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+      } catch (err) {
+        if (!deviceId) throw err;
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      }
+      micPermissionGranted = true;
+      recordStream = stream;
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (event) => { if (event.data.size > 0) audioChunks.push(event.data); };
+      mediaRecorder.start();
+      startWaveVisualizer(stream);
+      const pill = $('session-stage-pill');
+      pill.className = 'px-3 py-1 rounded-full text-sm font-semibold bg-emerald-50 text-emerald-600';
+      pill.textContent = 'Đang ghi âm';
+    }
+
+    function stopCapture() {
+      return new Promise(resolve => {
+        if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+          if (recordStream) { recordStream.getTracks().forEach(t => t.stop()); recordStream = null; }
+          stopWaveVisualizer(true);
+          resolve(null);
+          return;
+        }
+        pendingRecordingResolve = resolve;
+        mediaRecorder.onstop = () => {
+          const blob = audioChunks.length ? new Blob(audioChunks, { type: 'audio/webm' }) : null;
+          if (recordStream) { recordStream.getTracks().forEach(t => t.stop()); recordStream = null; }
+          mediaRecorder = null;
+          stopWaveVisualizer(true);
+          const finalResolve = pendingRecordingResolve;
+          pendingRecordingResolve = null;
+          finalResolve(blob);
+        };
+        mediaRecorder.stop();
+      });
+    }
+
+    async function finishSectionEarly() {
+      await finishSectionNow('Bạn kết thúc phần thi sớm');
+    }
+
+    async function finishSectionNow(reason) {
+      if (isFinishingSection) return;
+      isFinishingSection = true;
+      stopCountdown();
+      let audioBlob = null;
+      if (recordStream || (mediaRecorder && mediaRecorder.state !== 'inactive')) audioBlob = await stopCapture();
+      const result = buildSectionResult(currentSection, audioBlob, reason);
+      examResults.push(result);
+      currentSectionIndex += 1;
+      if (currentSectionIndex < currentPlan.length) {
+        renderTransitionCard(result);
+      } else {
+        renderFinalResult();
+      }
+      isFinishingSection = false;
+    }
+
+    function buildSectionResult(section, audioBlob, reason) {
+      const durationSec = section?.runtime?.startedAt ? Math.max(1, Math.round((Date.now() - section.runtime.startedAt) / 1000)) : 0;
+      const answered = section?.runtime?.answered || 0;
+      let total = 1;
+      if (section.type === 'part1') total = Math.max(answered, 4);
+      else if (section.type === 'part3') total = section.questions.length;
+      const completion = clamp(answered / total || 0, 0, 1);
+      const durationTarget = section.type === 'part2' ? section.speakDuration : section.duration;
+      const durationRatio = clamp(durationSec / Math.max(1, durationTarget), 0, 1);
+      let base = 5.0 + completion * 1.8 + durationRatio * 1.1;
+      if (section.type === 'part2') base += 0.2;
+      const score = roundHalf(clamp(base, 4.5, 8.5));
+      const subs = {
+        fluency: roundHalf(clamp(score + (durationRatio - 0.5), 4.5, 8.5)),
+        lexical: roundHalf(clamp(score + (completion - 0.5) * 0.5, 4.5, 8.5)),
+        grammar: roundHalf(clamp(score - 0.5 + completion * 0.4, 4.5, 8.5)),
+        pronunciation: roundHalf(clamp(score - 0.5 + durationRatio * 0.5, 4.5, 8.5))
+      };
+      return {
+        type: section.type,
+        label: section.label,
+        title: section.type === 'part2' ? section.prompt : section.topic,
+        reason,
+        score,
+        subs,
+        answered,
+        total,
+        durationSec,
+        audioUrl: audioBlob ? URL.createObjectURL(audioBlob) : null
+      };
+    }
+
+    function renderTransitionCard(lastResult) {
+      const nextSection = currentPlan[currentSectionIndex];
+      $('session-title').textContent = `${lastResult.label} đã hoàn thành`;
+      $('session-subtitle').textContent = lastResult.reason;
+      $('session-stage-pill').className = 'px-3 py-1 rounded-full text-sm font-semibold bg-primary/10 text-primary';
+      $('session-stage-pill').textContent = `Band mô phỏng ${lastResult.score.toFixed(1)}`;
+      $('session-timer').textContent = '00:00';
+      $('session-topic-title').textContent = 'Chuyển phần thi';
+      $('session-question-counter').textContent = 'Hoàn thành';
+      $('session-main-card').innerHTML = `
+        <div class="rounded-3xl bg-white border border-slate-200 p-6">
+          <div class="text-sm uppercase tracking-[0.18em] text-slate-400 mb-2">Tổng kết nhanh</div>
+          <div class="flex flex-wrap items-center gap-4 mb-4">
+            <div class="w-20 h-20 rounded-full bg-primary/10 text-primary font-extrabold text-3xl flex items-center justify-center border-4 border-primary/20">${lastResult.score.toFixed(1)}</div>
+            <div class="text-slate-600 leading-7">
+              <div>Đã trả lời: <b>${lastResult.answered}</b> / ${lastResult.total}</div>
+              <div>Thời lượng: <b>${formatTime(lastResult.durationSec)}</b></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-sm">Trôi chảy: <b>${lastResult.subs.fluency.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-sm">Từ vựng: <b>${lastResult.subs.lexical.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-sm">Ngữ pháp: <b>${lastResult.subs.grammar.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 text-sm">Phát âm: <b>${lastResult.subs.pronunciation.toFixed(1)}</b></div>
+          </div>
+          <div class="mt-6 text-slate-500 text-sm">Phần tiếp theo: <b class="text-slate-700">${nextSection.label}</b> · ${nextSection.preview}</div>
+        </div>
+      `;
+      $('session-actions').innerHTML = `<button onclick="startSection(currentPlan[currentSectionIndex])" class="bg-primary text-white rounded-2xl px-6 py-3 font-semibold hover:bg-primary/90 transition shadow-sm">Tiếp tục ${nextSection.label}</button>`;
+      renderOutline();
+      renderTips();
+    }
+
+    function renderFinalResult() {
+      showSection('mock-result');
+      setTopbar('Kết quả thi thử');
+      const overall = roundHalf(examResults.reduce((sum, r) => sum + r.score, 0) / Math.max(1, examResults.length));
+      $('result-overall-band').textContent = overall.toFixed(1);
+      $('result-title').textContent = currentMode === 'Full Test' ? 'Kết quả Full Speaking Test' : `Kết quả ${currentMode}`;
+      $('result-desc').textContent = currentMode === 'Full Test'
+        ? 'Hệ thống đã chấm mô phỏng từng phần và tính band tổng trung bình cho toàn bài thi.'
+        : 'Đây là kết quả mô phỏng cho phần thi bạn vừa hoàn thành.';
+      $('result-section-cards').innerHTML = examResults.map((result, idx) => `
+        <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <div class="text-sm uppercase tracking-[0.18em] text-slate-400 mb-1">${result.label}</div>
+              <h3 class="font-bold text-slate-800 text-lg clamp-2">${result.title}</h3>
+            </div>
+            <div class="w-16 h-16 rounded-full bg-primary/10 text-primary font-extrabold text-2xl flex items-center justify-center border-4 border-primary/20 shrink-0">${result.score.toFixed(1)}</div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">Trôi chảy: <b>${result.subs.fluency.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">Từ vựng: <b>${result.subs.lexical.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">Ngữ pháp: <b>${result.subs.grammar.toFixed(1)}</b></div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3">Phát âm: <b>${result.subs.pronunciation.toFixed(1)}</b></div>
+          </div>
+          <div class="text-sm text-slate-500 mb-4 leading-6">${result.reason} · Đã trả lời ${result.answered} / ${result.total} · Thời lượng ${formatTime(result.durationSec)}</div>
+          ${result.audioUrl ? `<audio controls class="w-full h-10"><source src="${result.audioUrl}" type="audio/webm"></audio>` : '<div class="text-sm text-slate-400">Không có bản ghi âm cho phần này.</div>'}
+        </div>
+      `).join('');
+    }
+
+    function cancelExam() {
+      if (!confirm('Thoát bài thi hiện tại? Dữ liệu ghi âm của phần đang làm sẽ không được lưu vào kết quả.')) return;
+      backToHome();
+    }
+  </script>
+</body>
+</html>
